@@ -1,0 +1,428 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest>
+
+  <remote  name="aosp"
+           fetch="https://android.googlesource.com/"
+           review="https://android-review.googlesource.com/" />
+  <remote  name="github"
+           fetch="https://github.com/" />
+  <remote  name="android_x86"
+           fetch="https://git.osdn.jp/gitroot/android-x86/" />
+  <remote  name="UberTC"
+           fetch="https://bitbucket.org/UBERTC/" />
+  <remote  name="udooboard-github"
+           fetch="https://github.com/UDOOboard/" />
+  <default revision="refs/tags/android-6.0.1_r74"
+           remote="aosp"
+           sync-j="4" />
+
+  <!-- UDOOboard kernel and u-boot -->
+  <project path="kernel_imx" name="linux_kernel" remote="udooboard-github" revision="m6.0.1-udoo" />
+  <project path="bootable/bootloader/uboot-imx" name="uboot-imx" remote="udooboard-github" revision="2015.04.imx" />
+
+  <!-- UDOOboard build -->
+  <project path="build" name="android_udoo_platform_build" remote="udooboard-github" revision="android-6.0.1" >
+    <copyfile src="core/root.mk" dest="Makefile" />
+    <copyfile src="udoo/make_sd.sh" dest="make_sd.sh" />
+    <copyfile src="udoo/prepare_distro.sh" dest="prepare_distro.sh" />
+    <copyfile src="udoo/README_compile_Android.txt" dest="README_compile_Android.txt" />
+    <copyfile src="udoo/README_make_uSD.txt" dest="README_make_uSD.txt" />
+  </project>
+
+  <!-- UDOOboard device layer -->
+  <project path="device/udoo" name="android_device_udoo" remote="udooboard-github" revision="android-6.0.1" />
+
+  <!-- projects added by UDOOboard -->
+  <project path="bootable/recovery" name="Team-Win-Recovery-Project" remote="udooboard-github" revision="android-6.0" />
+  <project path="device/fsl" name="android_device_fsl" remote="udooboard-github" revision="android-6.0.1" />
+  <project path="device/fsl-codec" name="FreeSrk/codec" remote="github" revision="master" />
+  <project path="device/fsl-proprietary" name="android_device_fsl-proprietary" remote="udooboard-github" revision="android-6.0.1" />
+  <project path="external/bash" name="android_external_bash" remote="udooboard-github" revision="cm-13.0" />
+  <project path="external/bossacjni" name="android_external_bossacjni" remote="udooboard-github" revision="master" />
+  <project path="external/busybox" name="CyanogenMod/android_external_busybox" remote="github" revision="cm-13.0" />
+  <project path="external/fsl_imx_omx" name="FreeSrk/omx" remote="github" revision="master" />
+  <project path="external/uicommon" name="CyanogenMod/android_external_cyanogen_UICommon" remote="github" revision="cm-13.0" />
+  <project path="external/libncurses" name="CyanogenMod/android_external_libncurses" remote="github" revision="cm-13.0" />
+  <project path="external/libtruezip" name="CyanogenMod/android_external_libtruezip" remote="github" revision="cm-13.0" />
+  <project path="external/linux-firmware-imx" name="android_external_linux-firmware-imx" remote="udooboard-github" revision="android-6.0.1" />
+  <project path="external/linux-lib" name="android_external_linux-lib" remote="udooboard-github" revision="android-6.0.1" />
+  <project path="external/linux-test" name="android_external_linux-test" remote="udooboard-github" revision="android-6.0.1" />
+  <project path="external/mtd-utils" name="android_external_mtd-utils" remote="udooboard-github" revision="android-6.0.1" />
+  <project path="external/nano" name="CyanogenMod/android_external_nano" remote="github" revision="cm-13.0" />
+  <project path="external/ntfs-3g" name="android_external_ntfs-3g" remote="udooboard-github" revision="android-6.0.1" />
+  <project path="external/powerdebug" name="android_external_powerdebug" remote="udooboard-github" revision="android-6.0.1" />
+  <project path="external/toybox" name="CyanogenMod/android_external_toybox" remote="github" revision="cm-13.0" />
+  <project path="external/tools" name="android_external_tools" remote="udooboard-github" revision="android-6.0.1" />
+  <project path="external/udooneo-m4uploader" name="udooneo-m4uploader" remote="udooboard-github" revision="master" />
+  <project path="external/udoofota" name="udoofota" remote="udooboard-github" revision="master" />
+  <project path="hardware/imx" name="android_hardware_imx" remote="udooboard-github" revision="android-6.0.1" />
+  <project path="hardware/ti/wlan" name="android_hardware_ti_wlan" remote="udooboard-github" revision="android-6.0.1" />
+  <project path="hardware/ti/wpan" name="android_hardware_ti_wpan" remote="udooboard-github" revision="android-6.0.1" />
+  <project path="packages/apps/AdbWireless" name="android_packages_apps_AdbWireless" remote="udooboard-github" revision="android-6.0.1" />
+  <project path="packages/apps/CMFileManager" name="CyanogenMod/android_packages_apps_CMFileManager" remote="github" revision="cm-13.0" />
+  <project path="packages/apps/fsl_imx_demo" name="android_packages_apps_fsl_imx_demo" remote="udooboard-github" revision="android-6.0.1" />
+  <project path="packages/apps/Minicom" name="android_packages_apps_Minicom" remote="udooboard-github" revision="master" />
+  <project path="packages/apps/SuperSU" name="android_packages_apps_SuperSU" remote="udooboard-github" revision="android-6.0.1" />
+  <project path="packages/apps/Terminal" name="android_packages_apps_Terminal" remote="udooboard-github" revision="cm-13.0" />
+  <project path="packages/apps/UdooReboot" name="android_packages_apps_UdooReboot" remote="udooboard-github" revision="master" />
+
+  <!-- AOSP projects changed by UDOOboard and NXP -->
+  <project path="bionic" name="android_bionic" remote="udooboard-github" revision="android-6.0.1" />
+  <project path="external/dnsmasq" name="android_external_dnsmasq" remote="udooboard-github" revision="android-6.0.1" />
+  <project path="external/kernel-headers" name="android_external_kernel-headers" remote="udooboard-github" revision="android-6.0.1" />
+  <project path="external/ppp" name="android_external_ppp" remote="udooboard-github" revision="android-6.0.1" />
+  <project path="external/skia" name="android_external_skia" remote="udooboard-github" revision="android-6.0.1" />
+  <project path="external/tinyalsa" name="android_external_tinyalsa" remote="udooboard-github" revision="android-6.0.1" />
+  <project path="external/wpa_supplicant_8" name="android_external_wpa_supplicant_8" remote="udooboard-github" revision="android-6.0.1" />
+  <project path="frameworks/av" name="android_frameworks_av" remote="udooboard-github" revision="android-6.0.1" />
+  <project path="frameworks/base" name="android_frameworks_base" remote="udooboard-github" revision="android-6.0.1" />
+  <project path="frameworks/native" name="android_frameworks_native" remote="udooboard-github" revision="android-6.0.1" />
+  <project path="frameworks/opt/net/ethernet" name="android_frameworks_opt_net_ethernet" remote="udooboard-github" revision="android-6.0.1" />
+  <project path="frameworks/opt/telephony" name="android_frameworks_opt_telephony" remote="udooboard-github" revision="android-6.0.1" />
+  <project path="hardware/libhardware" name="android_hardware_libhardware" remote="udooboard-github" revision="android-6.0.1" />
+  <project path="hardware/libhardware_legacy" name="android_hardware_libhardware_legacy" remote="udooboard-github" revision="android-6.0.1" />
+  <project path="hardware/ril" name="android_hardware_ril" remote="udooboard-github" revision="android-6.0.1" />
+  <project path="libcore" name="android_libcore" remote="udooboard-github" revision="android-6.0.1" />
+  <project path="packages/apps/Bluetooth" name="android_packages_apps_Bluetooth" remote="udooboard-github" revision="android-6.0.1" />
+  <project path="packages/apps/Browser" name="android_packages_apps_Browser" remote="udooboard-github" revision="android-6.0.1" />
+  <project path="packages/apps/Camera2" name="android_packages_apps_Camera2" remote="udooboard-github" revision="android-6.0.1" />
+  <project path="packages/apps/Contacts" name="android_packages_apps_Contacts" remote="udooboard-github" revision="android-6.0.1" />
+  <project path="packages/apps/DeskClock" name="android_packages_apps_DeskClock" remote="udooboard-github" revision="android-6.0.1" />
+  <project path="packages/apps/Gallery" name="android_packages_apps_Gallery" remote="udooboard-github" revision="android-6.0.1" />
+  <project path="packages/apps/Gallery2" name="android_packages_apps_Gallery2" remote="udooboard-github" revision="android-6.0.1" />
+  <project path="packages/apps/Launcher2" name="android_packages_apps_Launcher2" remote="udooboard-github" revision="android-6.0.1" />
+  <project path="packages/apps/LegacyCamera" name="android_packages_apps_LegacyCamera" remote="udooboard-github" revision="android-6.0.1" />
+  <project path="packages/apps/Settings" name="android_packages_apps_Settings" remote="udooboard-github" revision="android-6.0.1" />
+  <project path="packages/apps/SoundRecorder" name="android_packages_apps_SoundRecorder" remote="udooboard-github" revision="android-6.0.1" />
+  <project path="system/bt" name="android_system_bt" remote="udooboard-github" revision="android-6.0.1" />
+  <project path="system/core" name="android_system_core" remote="udooboard-github" revision="android-6.0.1" />
+  <project path="system/extras" name="android_system_extras" remote="udooboard-github" revision="android-6.0.1" />
+  <project path="system/media" name="android_system_media" remote="udooboard-github" revision="android-6.0.1" />
+  <project path="system/netd" name="android_system_netd" remote="udooboard-github" revision="android-6.0.1" />
+  <project path="system/vold" name="android_system_vold" remote="udooboard-github" revision="android-6.0.1" />
+  
+  <!-- Unchanged from Android_x86 -->
+  <project path="external/bluetooth/bluez" name="platform/external/bluetooth/bluez" remote="android_x86" revision="9c984105900b298e75f6bb105aef8dea9bd0f110" upstream="marshmallow-x86"/>
+  <project path="external/bluetooth/glib" name="platform/external/bluetooth/glib" remote="android_x86" revision="43b201bd2865131f849c0fdb58efc830de69aa7a" upstream="marshmallow-x86"/>
+  <project path="external/bluetooth/sbc" name="platform/external/bluetooth/sbc" remote="android_x86" revision="24812c660036a693f8770766aa6fdea667de05d0" upstream="marshmallow-x86"/>
+  
+  <!-- Unchanged from UberTC -->
+  <project name="arm-eabi-5.3.git" path="prebuilts/gcc/linux-x86/arm/arm-eabi-5.3" remote="UberTC" revision="master"/>
+  
+  <!-- Unchanged AOSP projects -->
+  <project name="device/common" />
+  <project name="device/generic/armv7-a-neon" />
+  <project name="device/generic/common" />
+  <project name="device/google/accessory/arduino" />
+  <project name="device/google/accessory/demokit" />
+  <project name="device/google/atv" />
+  <project name="platform/abi/cpp" path="abi/cpp" />
+  <project name="platform/art" path="art" />
+  <project name="platform/dalvik" path="dalvik" />
+  <project name="platform/developers/build" path="developers/build" />
+  <project name="platform/development" path="development" />
+  <project name="platform/external/aac" path="external/aac" />
+  <project name="platform/external/android-clat" path="external/android-clat" />
+  <project name="platform/external/android-mock" path="external/android-mock" />
+  <project name="platform/external/androidplot" path="external/androidplot" />
+  <project name="platform/external/ant-glob" path="external/ant-glob" />
+  <project name="platform/external/antlr" path="external/antlr" />
+  <project name="platform/external/apache-commons-math" path="external/apache-commons-math" />
+  <project name="platform/external/apache-harmony" path="external/apache-harmony" />
+  <project name="platform/external/apache-http" path="external/apache-http" />
+  <project name="platform/external/apache-xml" path="external/apache-xml" />
+  <project name="platform/external/bison" path="external/bison" />
+  <project name="platform/external/blktrace" path="external/blktrace" />
+  <project name="platform/external/boringssl" path="external/boringssl" />
+  <project name="platform/external/bouncycastle" path="external/bouncycastle" />
+  <project name="platform/external/bsdiff" path="external/bsdiff" />
+  <project name="platform/external/bzip2" path="external/bzip2" />
+  <project name="platform/external/cblas" path="external/cblas" />
+  <project name="platform/external/ceres-solver" path="external/ceres-solver" />
+  <project name="platform/external/chromium-libpac" path="external/chromium-libpac" />
+  <project name="platform/external/chromium-trace" path="external/chromium-trace" />
+  <project name="platform/external/chromium-webview" path="external/chromium-webview" />
+  <project name="platform/external/clang" path="external/clang" />
+  <project name="platform/external/cmockery" path="external/cmockery" />
+  <project name="platform/external/compiler-rt" path="external/compiler-rt" />
+  <project name="platform/external/conscrypt" path="external/conscrypt" />
+  <project name="platform/external/crcalc" path="external/crcalc" />
+  <project name="platform/external/deqp" path="external/deqp" />
+  <project name="platform/external/dexmaker" path="external/dexmaker" />
+  <project name="platform/external/dhcpcd" path="external/dhcpcd" />
+  <project name="platform/external/doclava" path="external/doclava" />
+  <project name="platform/external/donuts" path="external/donuts" />
+  <project name="platform/external/drm_gralloc" path="external/drm_gralloc" />
+  <project name="platform/external/drm_hwcomposer" path="external/drm_hwcomposer" />
+  <project name="platform/external/droiddriver" path="external/droiddriver" />
+  <project name="platform/external/e2fsprogs" path="external/e2fsprogs" />
+  <project name="platform/external/easymock" path="external/easymock" />
+  <project name="platform/external/eigen" path="external/eigen" />
+  <project name="platform/external/elfutils" path="external/elfutils" />
+  <project name="platform/external/embunit" path="external/embunit" />
+  <project name="platform/external/emma" path="external/emma" />
+  <project name="platform/external/esd" path="external/esd" />
+  <project name="platform/external/expat" path="external/expat" />
+  <project name="platform/external/eyes-free" path="external/eyes-free" />
+  <project name="platform/external/f2fs-tools" path="external/f2fs-tools" />
+  <project name="platform/external/fdlibm" path="external/fdlibm" />
+  <project name="platform/external/fio" path="external/fio" />
+  <project name="platform/external/flac" path="external/flac" />
+  <project name="platform/external/fonttools" path="external/fonttools" />
+  <project name="platform/external/freetype" path="external/freetype" />
+  <project name="platform/external/fsck_msdos" path="external/fsck_msdos" />
+  <project name="platform/external/giflib" path="external/giflib" />
+  <project name="platform/external/glide" path="external/glide" />
+  <project name="platform/external/google-breakpad" path="external/google-breakpad" />
+  <project name="platform/external/google-fonts/carrois-gothic-sc" path="external/google-fonts/carrois-gothic-sc" />
+  <project name="platform/external/google-fonts/coming-soon" path="external/google-fonts/coming-soon" />
+  <project name="platform/external/google-fonts/cutive-mono" path="external/google-fonts/cutive-mono" />
+  <project name="platform/external/google-fonts/dancing-script" path="external/google-fonts/dancing-script" />
+  <project name="platform/external/google-tv-pairing-protocol" path="external/google-tv-pairing-protocol" />
+  <project name="platform/external/gptfdisk" path="external/gptfdisk" />
+  <project name="platform/external/gtest" path="external/gtest" />
+  <project name="platform/external/guava" path="external/guava" />
+  <project name="platform/external/hamcrest" path="external/hamcrest" />
+  <project name="platform/external/harfbuzz_ng" path="external/harfbuzz_ng" />
+  <project name="platform/external/hyphenation-patterns" path="external/hyphenation-patterns" />
+  <project name="platform/external/icu" path="external/icu" />
+  <project name="platform/external/iproute2" path="external/iproute2" />
+  <project name="platform/external/ipsec-tools" path="external/ipsec-tools" />
+  <project name="platform/external/iptables" path="external/iptables" />
+  <project name="platform/external/iputils" path="external/iputils" />
+  <project name="platform/external/jack" path="external/jack" />
+  <project name="platform/external/jarjar" path="external/jarjar" />
+  <project name="platform/external/javasqlite" path="external/javasqlite" />
+  <project name="platform/external/javassist" path="external/javassist" />
+  <project name="platform/external/jdiff" path="external/jdiff" />
+  <project name="platform/external/jemalloc" path="external/jemalloc" />
+  <project name="platform/external/jetty" path="external/jetty" />
+  <project name="platform/external/jhead" path="external/jhead" />
+  <project name="platform/external/jmdns" path="external/jmdns" />
+  <project name="platform/external/jmonkeyengine" path="external/jmonkeyengine" />
+  <project name="platform/external/jpeg" path="external/jpeg" />
+  <project name="platform/external/jsilver" path="external/jsilver" />
+  <project name="platform/external/jsmn" path="external/jsmn" />
+  <project name="platform/external/jsoncpp" path="external/jsoncpp" />
+  <project name="platform/external/jsr305" path="external/jsr305" />
+  <project name="platform/external/junit" path="external/junit" />
+  <project name="platform/external/ksoap2" path="external/ksoap2" />
+  <project name="platform/external/libavc" path="external/libavc" />
+  <project name="platform/external/libcap-ng" path="external/libcap-ng" />
+  <project name="platform/external/libcxx" path="external/libcxx" />
+  <project name="platform/external/libcxxabi" path="external/libcxxabi" />
+  <project name="platform/external/libdrm" path="external/libdrm" />
+  <project name="platform/external/libedit" path="external/libedit" />
+  <project name="platform/external/libexif" path="external/libexif" />
+  <project name="platform/external/libgsm" path="external/libgsm" />
+  <project name="platform/external/libhevc" path="external/libhevc" />
+  <project name="platform/external/liblzf" path="external/liblzf" />
+  <project name="platform/external/libmpeg2" path="external/libmpeg2" />
+  <project name="platform/external/libmtp" path="external/libmtp" />
+  <project name="platform/external/libnl" path="external/libnl" />
+  <project name="platform/external/libogg" path="external/libogg" />
+  <project name="platform/external/libopus" path="external/libopus" />
+  <project name="platform/external/libpcap" path="external/libpcap" />
+  <project name="platform/external/libphonenumber" path="external/libphonenumber" />
+  <project name="platform/external/libpng" path="external/libpng" />
+  <project name="platform/external/libseccomp-helper" path="external/libseccomp-helper" />
+  <project name="platform/external/libselinux" path="external/libselinux" />
+  <project name="platform/external/libssh2" path="external/libssh2" />
+  <project name="platform/external/libunwind" path="external/libunwind" />
+  <project name="platform/external/libusb" path="external/libusb" />
+  <project name="platform/external/libusb_aah" path="external/libusb_aah" revision="kitkat-wear" />
+  <project name="platform/external/libusb-compat" path="external/libusb-compat" />
+  <project name="platform/external/libutf" path="external/libutf" />
+  <project name="platform/external/libvncserver" path="external/libvncserver" />
+  <project name="platform/external/libvorbis" path="external/libvorbis" />
+  <project name="platform/external/libvpx" path="external/libvpx" />
+  <project name="platform/external/libvterm" path="external/libvterm" />
+  <project name="platform/external/libxml2" path="external/libxml2" />
+  <project name="platform/external/libyuv" path="external/libyuv" />
+  <project name="platform/external/linux-tools-perf" path="external/linux-tools-perf" />
+  <project name="platform/external/littlemock" path="external/littlemock" />
+  <project name="platform/external/lld" path="external/lld" />
+  <project name="platform/external/lldb" path="external/lldb" />
+  <project name="platform/external/llvm" path="external/llvm" />
+  <project name="platform/external/ltrace" path="external/ltrace" />
+  <project name="platform/external/lz4" path="external/lz4" />
+  <project name="platform/external/lzma" path="external/lzma" />
+  <project name="platform/external/marisa-trie" path="external/marisa-trie" />
+  <project name="platform/external/markdown" path="external/markdown" />
+  <project name="platform/external/mdnsresponder" path="external/mdnsresponder" />
+  <project name="platform/external/mesa3d" path="external/mesa3d" />
+  <project name="platform/external/messageformat" path="external/messageformat" />
+  <project name="platform/external/mksh" path="external/mksh" />
+  <project name="platform/external/mockftpserver" path="external/mockftpserver" />
+  <project name="platform/external/mockito" path="external/mockito" />
+  <project name="platform/external/mockwebserver" path="external/mockwebserver" />
+  <project name="platform/external/mp4parser" path="external/mp4parser" />
+  <project name="platform/external/mtpd" path="external/mtpd" />
+  <project name="platform/external/nanohttpd" path="external/nanohttpd" />
+  <project name="platform/external/nanopb-c" path="external/nanopb-c" />
+  <project name="platform/external/naver-fonts" path="external/naver-fonts" />
+  <project name="platform/external/netcat" path="external/netcat" />
+  <project name="platform/external/netperf" path="external/netperf" />
+  <project name="platform/external/neven" path="external/neven" />
+  <project name="platform/external/nfacct" path="external/nfacct" />
+  <project name="platform/external/nist-pkits" path="external/nist-pkits" />
+  <project name="platform/external/nist-sip" path="external/nist-sip" />
+  <project name="platform/external/noto-fonts" path="external/noto-fonts" />
+  <project name="platform/external/oauth" path="external/oauth" />
+  <project name="platform/external/objenesis" path="external/objenesis" />
+  <project name="platform/external/okhttp" path="external/okhttp" />
+  <project name="platform/external/opencv" path="external/opencv" />
+  <project name="platform/external/openfst" path="external/openfst" />
+  <project name="platform/external/openssh" path="external/openssh" />
+  <project name="platform/external/owasp/sanitizer" path="external/owasp/sanitizer" />
+  <project name="platform/external/parameter-framework" path="external/parameter-framework" />
+  <project name="platform/external/pcre" path="external/pcre" />
+  <project name="platform/external/pdfium" path="external/pdfium" />
+  <project name="platform/external/proguard" path="external/proguard" />
+  <project name="platform/external/protobuf" path="external/protobuf" />
+  <project name="platform/external/regex-re2" path="external/regex-re2" />
+  <project name="platform/external/replicaisland" path="external/replicaisland" />
+  <project name="platform/external/robolectric" path="external/robolectric" />
+  <project name="platform/external/roboto-fonts" path="external/roboto-fonts" />
+  <project name="platform/external/safe-iop" path="external/safe-iop" />
+  <project name="platform/external/scrypt" path="external/scrypt" />
+  <project name="platform/external/selinux" path="external/selinux" />
+  <project name="platform/external/sepolicy" path="external/sepolicy" />
+  <project name="platform/external/sfntly" path="external/sfntly" />
+  <project name="platform/external/slf4j" path="external/slf4j" />
+  <project name="platform/external/smali" path="external/smali" />
+  <project name="platform/external/sonic" path="external/sonic" />
+  <project name="platform/external/sonivox" path="external/sonivox" />
+  <project name="platform/external/speex" path="external/speex" />
+  <project name="platform/external/sqlite" path="external/sqlite" />
+  <project name="platform/external/squashfs-tools" path="external/squashfs-tools" />
+  <project name="platform/external/srtp" path="external/srtp" />
+  <project name="platform/external/strace" path="external/strace" />
+  <project name="platform/external/svox" path="external/svox" />
+  <project name="platform/external/tagsoup" path="external/tagsoup" />
+  <project name="platform/external/tcpdump" path="external/tcpdump" />
+  <project name="platform/external/timezonepicker-support" path="external/timezonepicker-support" />
+  <project name="platform/external/tinycompress" path="external/tinycompress" />
+  <project name="platform/external/tinyxml" path="external/tinyxml" />
+  <project name="platform/external/tinyxml2" path="external/tinyxml2" />
+  <project name="platform/external/tremolo" path="external/tremolo" />
+  <project name="platform/external/v8" path="external/v8" />
+  <project name="platform/external/valgrind" path="external/valgrind" />
+  <project name="platform/external/vboot_reference" path="external/vboot_reference" />
+  <project name="platform/external/vixl" path="external/vixl" />
+  <project name="platform/external/vogar" path="external/vogar" />
+  <project name="platform/external/webp" path="external/webp" />
+  <project name="platform/external/webrtc" path="external/webrtc" />
+  <project name="platform/external/xmlwriter" path="external/xmlwriter" />
+  <project name="platform/external/xmp_toolkit" path="external/xmp_toolkit" />
+  <project name="platform/external/zlib" path="external/zlib" />
+  <project name="platform/external/zopfli" path="external/zopfli" />
+  <project name="platform/external/zxing" path="external/zxing" />
+  <project name="platform/frameworks/compile/libbcc" path="frameworks/compile/libbcc" />
+  <project name="platform/frameworks/compile/mclinker" path="frameworks/compile/mclinker" />
+  <project name="platform/frameworks/compile/slang" path="frameworks/compile/slang" />
+  <project name="platform/frameworks/data-binding" path="frameworks/data-binding" />
+  <project name="platform/frameworks/ex" path="frameworks/ex" />
+  <project name="platform/frameworks/mff" path="frameworks/mff" />
+  <project name="platform/frameworks/minikin" path="frameworks/minikin" />
+  <project name="platform/frameworks/ml" path="frameworks/ml" />
+  <project name="platform/frameworks/multidex" path="frameworks/multidex" />
+  <project name="platform/frameworks/opt/bitmap" path="frameworks/opt/bitmap" />
+  <project name="platform/frameworks/opt/bluetooth" path="frameworks/opt/bluetooth" />
+  <project name="platform/frameworks/opt/calendar" path="frameworks/opt/calendar" />
+  <project name="platform/frameworks/opt/carddav" path="frameworks/opt/carddav" />
+  <project name="platform/frameworks/opt/chips" path="frameworks/opt/chips" />
+  <project name="platform/frameworks/opt/colorpicker" path="frameworks/opt/colorpicker" />
+  <project name="platform/frameworks/opt/datetimepicker" path="frameworks/opt/datetimepicker" />
+  <project name="platform/frameworks/opt/emoji" path="frameworks/opt/emoji" />
+  <project name="platform/frameworks/opt/inputconnectioncommon" path="frameworks/opt/inputconnectioncommon" />
+  <project name="platform/frameworks/opt/inputmethodcommon" path="frameworks/opt/inputmethodcommon" />
+  <project name="platform/frameworks/opt/net/ims" path="frameworks/opt/net/ims" />
+  <project name="platform/frameworks/opt/net/voip" path="frameworks/opt/net/voip" />
+  <project name="platform/frameworks/opt/net/wifi" path="frameworks/opt/net/wifi" />
+  <project name="platform/frameworks/opt/photoviewer" path="frameworks/opt/photoviewer" />
+  <project name="platform/frameworks/opt/setupwizard" path="frameworks/opt/setupwizard" />
+  <project name="platform/frameworks/opt/timezonepicker" path="frameworks/opt/timezonepicker" />
+  <project name="platform/frameworks/opt/vcard" path="frameworks/opt/vcard" />
+  <project name="platform/frameworks/opt/widget" path="frameworks/opt/widget" />
+  <project name="platform/frameworks/rs" path="frameworks/rs" />
+  <project name="platform/frameworks/support" path="frameworks/support" />
+  <project name="platform/frameworks/volley" path="frameworks/volley" />
+  <project name="platform/frameworks/webview" path="frameworks/webview" />
+  <project name="platform/frameworks/wilhelm" path="frameworks/wilhelm" />
+  <project name="platform/hardware/akm" path="hardware/akm" />
+  <project name="platform/libnativehelper" path="libnativehelper" />
+  <project name="platform/ndk" path="ndk" />
+  <project name="platform/packages/apps/Calculator" path="packages/apps/Calculator" />
+  <project name="platform/packages/apps/Calendar" path="packages/apps/Calendar" />
+  <project name="platform/packages/apps/Camera" path="packages/apps/Camera" />
+  <project name="platform/packages/apps/CellBroadcastReceiver" path="packages/apps/CellBroadcastReceiver" />
+  <project name="platform/packages/apps/CertInstaller" path="packages/apps/CertInstaller" />
+  <project name="platform/packages/apps/ContactsCommon" path="packages/apps/ContactsCommon" />
+  <project name="platform/packages/apps/ExactCalculator" path="packages/apps/ExactCalculator" />
+  <project name="platform/packages/apps/HTMLViewer" path="packages/apps/HTMLViewer" />
+  <project name="platform/packages/apps/KeyChain" path="packages/apps/KeyChain" />
+  <project name="platform/packages/apps/Launcher3" path="packages/apps/Launcher3" />
+  <project name="platform/packages/apps/ManagedProvisioning" path="packages/apps/ManagedProvisioning" />
+  <project name="platform/packages/apps/Messaging" path="packages/apps/Messaging" />
+  <project name="platform/packages/apps/Music" path="packages/apps/Music" />
+  <project name="platform/packages/apps/MusicFX" path="packages/apps/MusicFX" />
+  <project name="platform/packages/apps/OneTimeInitializer" path="packages/apps/OneTimeInitializer" />
+  <project name="platform/packages/apps/PackageInstaller" path="packages/apps/PackageInstaller" />
+  <project name="platform/packages/apps/PhoneCommon" path="packages/apps/PhoneCommon" />
+  <project name="platform/packages/apps/Protips" path="packages/apps/Protips" />
+  <project name="platform/packages/apps/Provision" path="packages/apps/Provision" />
+  <project name="platform/packages/apps/SmartCardService" path="packages/apps/SmartCardService" />
+  <project name="platform/packages/apps/SpareParts" path="packages/apps/SpareParts" />
+  <project name="platform/packages/apps/SpeechRecorder" path="packages/apps/SpeechRecorder" />
+  <project name="platform/packages/apps/Stk" path="packages/apps/Stk" />
+  <project name="platform/packages/apps/TvSettings" path="packages/apps/TvSettings" />
+  <project name="platform/packages/apps/UnifiedEmail" path="packages/apps/UnifiedEmail" />
+  <project name="platform/packages/experimental" path="packages/experimental" />
+  <project name="platform/packages/inputmethods/LatinIME" path="packages/inputmethods/LatinIME" />
+  <project name="platform/packages/inputmethods/OpenWnn" path="packages/inputmethods/OpenWnn" />
+  <project name="platform/packages/providers/ApplicationsProvider" path="packages/providers/ApplicationsProvider" />
+  <project name="platform/packages/providers/BookmarkProvider" path="packages/providers/BookmarkProvider" />
+  <project name="platform/packages/providers/CalendarProvider" path="packages/providers/CalendarProvider" />
+  <project name="platform/packages/providers/ContactsProvider" path="packages/providers/ContactsProvider" />
+  <project name="platform/packages/providers/DownloadProvider" path="packages/providers/DownloadProvider" />
+  <project name="platform/packages/providers/MediaProvider" path="packages/providers/MediaProvider" />
+  <project name="platform/packages/providers/PartnerBookmarksProvider" path="packages/providers/PartnerBookmarksProvider" />
+  <project name="platform/packages/providers/TelephonyProvider" path="packages/providers/TelephonyProvider" />
+  <project name="platform/packages/providers/TvProvider" path="packages/providers/TvProvider" />
+  <project name="platform/packages/providers/UserDictionaryProvider" path="packages/providers/UserDictionaryProvider" />
+  <project name="platform/packages/screensavers/Basic" path="packages/screensavers/Basic" />
+  <project name="platform/packages/screensavers/PhotoTable" path="packages/screensavers/PhotoTable" />
+  <project name="platform/packages/screensavers/WebView" path="packages/screensavers/WebView" />
+  <project name="platform/packages/services/Telecomm" path="packages/services/Telecomm" />
+  <project name="platform/packages/services/Telephony" path="packages/services/Telephony" />
+  <project name="platform/packages/wallpapers/Basic" path="packages/wallpapers/Basic" />
+  <project name="platform/packages/wallpapers/Galaxy4" path="packages/wallpapers/Galaxy4" />
+  <project name="platform/packages/wallpapers/HoloSpiral" path="packages/wallpapers/HoloSpiral" />
+  <project name="platform/packages/wallpapers/LivePicker" path="packages/wallpapers/LivePicker" />
+  <project name="platform/packages/wallpapers/MagicSmoke" path="packages/wallpapers/MagicSmoke" />
+  <project name="platform/packages/wallpapers/NoiseField" path="packages/wallpapers/NoiseField" />
+  <project name="platform/packages/wallpapers/PhaseBeam" path="packages/wallpapers/PhaseBeam" />
+  <project name="platform/pdk" path="pdk" />
+  <project name="platform/platform_testing" path="platform_testing" />
+  <project name="platform/prebuilts/clang/linux-x86/host/3.6" path="prebuilts/clang/linux-x86/host/3.6" />
+  <project name="platform/prebuilts/devtools" path="prebuilts/devtools" />
+  <project name="platform/prebuilts/gcc/linux-x86/arm/arm-linux-androideabi-4.9" path="prebuilts/gcc/linux-x86/arm/arm-linux-androideabi-4.9" />
+  <project name="platform/prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.11-4.8" path="prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.11-4.8" />
+  <project name="platform/prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.15-4.8" path="prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.15-4.8" />
+  <project name="platform/prebuilts/gradle-plugin" path="prebuilts/gradle-plugin" />
+  <project name="platform/prebuilts/libs/libedit" path="prebuilts/libs/libedit" />
+  <project name="platform/prebuilts/maven_repo/android" path="prebuilts/maven_repo/android" />
+  <project name="platform/prebuilts/misc" path="prebuilts/misc" />
+  <project name="platform/prebuilts/ndk" path="prebuilts/ndk" />
+  <project name="platform/prebuilts/python/linux-x86/2.7.5" path="prebuilts/python/linux-x86/2.7.5" />
+  <project clone-depth="1" name="platform/prebuilts/qemu-kernel" path="prebuilts/qemu-kernel" />
+  <project name="platform/prebuilts/sdk" path="prebuilts/sdk" />
+  <project name="platform/prebuilts/tools" path="prebuilts/tools" />
+  <project name="platform/sdk" path="sdk" />
+  <project name="platform/system/gatekeeper" path="system/gatekeeper" />
+  <project name="platform/system/keymaster" path="system/keymaster" />
+  <project name="platform/system/security" path="system/security" />
+  <project name="platform/tools/external/fat32lib" path="tools/external/fat32lib" />
+  <project name="platform/tools/external/gradle" path="tools/external/gradle" />
+</manifest>
