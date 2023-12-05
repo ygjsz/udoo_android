@@ -7,7 +7,7 @@
   <remote  name="github"
            fetch="https://github.com/" />
   <remote  name="android_x86"
-           fetch="https://git.osdn.jp/gitroot/android-x86/" />
+           fetch="http://scm.osdn.net/gitroot/android-x86/" />
   <remote  name="UberTC"
            fetch="https://bitbucket.org/UBERTC/" />
   <remote  name="udooboard-github"
